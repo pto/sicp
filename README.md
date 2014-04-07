@@ -1,0 +1,4 @@
+sicp
+====
+
+Pursuing SICP

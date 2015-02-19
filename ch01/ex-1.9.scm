@@ -16,6 +16,10 @@
 ; (inc (inc (inc (plus (dec 2) 5))))
 ; (inc (inc (inc (inc (plus (dec 1) 5 )))))
 ; (inc (inc (inc (inc 5))))
+; (inc (inc (inc 6)))
+; (inc (inc 7))
+; (inc 8)
+; 9
 ; -- recursive
 
 (define (plus2 a b)

@@ -14,13 +14,14 @@
 (theorem 1)
 ; expecting 1
 
-; Assume that Fib(k) ~= (theorem k) for k < n
+; Assume that Fib(k) = (theorem k) for k < n
 ; Fib(n) = Fib(n-1) + Fib(n-2) by definition
+; (theorem 0) = Fib(0) and (theorem 1) = Fib(1) as shown above
 ; using (expt phi 2) == (+ phi 1)
 ; and (expt psi 2) == (+ psi 1)
 ; by rearranging the phi and psi factors together
 ; and factoring out (+ 1 phi) and (+ 1 psi)
-; we get that Fib(n) ~= (theorem n)
+; we get that Fib(n) = (theorem n)
 
 (define (fib n)
   (define (fib-iter a b count)
@@ -47,3 +48,13 @@
 ; result 35422484817926191507
 (theorem 100)
 ; result 3.542248481792618e20 -- beyond precision of double
+
+; It remains to show that (< (/ (expt psi n) (sqrt 5)) 0.5)
+psi
+; result -.6180339887498949
+(expt psi 2)
+; result .3819660112501052
+; So all higher powers will be less than 0.5.
+(sqrt 5)
+; result 2.23606797749979
+; So the the desired relationship is true

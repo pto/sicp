@@ -6,23 +6,24 @@
 	 (* 3 (f-recursive (- n 3))))))
 
 (f-recursive 1)
+(f-recursive 3)
 (f-recursive 10)
+(f-recursive 15)
 (f-recursive 3.5)
 
 (define (f n)
-  (if (< n 0)
+  (if (< n 3)
       n
-      (f-iter 0 1 2 n)))
+      (f-iter 2 1 0 n)))
 
 (define (f-iter a b c count)
-  (if (<= count 0)
+  (if (< count 3)
       a
-      (f-iter b c (+ c (* 2 b) (* 3 a)) (- count 1))))
+      (f-iter (+ a (* 2 b) (* 3 c)) a b (- count 1))))
 
-(define (<= a b)
-  (or (< a b) (= a b)))
-
+(f 1)
 (f 3)
 (f 10)
+(f 15)
 (f 3.5) ; nope, recurse and memoize instead
 

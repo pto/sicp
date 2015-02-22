@@ -23,23 +23,21 @@
 (define (count-change amount)
   (cc amount 5))
 
-(define (cc amount number-of-coins)
-  (display '"(cc ")
-  (display amount)
-  (display '" ")
-  (display number-of-coins)
-  (display '")")
+(define (cc amount kinds-of-coins)
   (cond ((= amount 0) 1)
-	((or (< amount 0) (= number-of-coins 0)) 0)
-	(else (+ (cc amount (- number-of-coins 1))
-		 (cc (- amount (first-denomination number-of-coins))
-		     number-of-coins)))))
+	((or (< amount 0) (= kinds-of-coins 0)) 0)
+	(else (+ (cc amount
+		     (- kinds-of-coins 1))
+		 (cc (- amount
+			(first-denomination kinds-of-coins))
+		     kinds-of-coins)))))
 
-(define (first-denomination number-of-coins)
-  (cond ((= number-of-coins 1) 1)
-	((= number-of-coins 2) 5)
-	((= number-of-coins 3) 10)
-	((= number-of-coins 4) 25)
-	((= number-of-coins 5) 50)))
+(define (first-denomination kinds-of-coins)
+  (cond ((= kinds-of-coins 1) 1)
+	((= kinds-of-coins 2) 5)
+	((= kinds-of-coins 3) 10)
+	((= kinds-of-coins 4) 25)
+	((= kinds-of-coins 5) 50)))
 
 (count-change 100)
+; expected: 292

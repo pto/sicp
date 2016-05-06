@@ -9,3 +9,6 @@
 
 (a-plus-abs-b 42 -42)
 ; expected: 84
+
+(a-plus-abs-b -1 -1)
+; expected: 0

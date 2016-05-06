@@ -6,4 +6,4 @@
       y))
 
 (test 0 (p))
-; expected: endless loop
+; expected: endless recursion

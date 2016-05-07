@@ -3,7 +3,7 @@
 	((= b (least a b c)) (sum-of-squares a c))
 	(else (sum-of-squares a b))))
 
-(define (sum-of-squares x
+(define (sum-of-squares x y)
   (+ (square x) (square y)))
 
 (define (least a b c)

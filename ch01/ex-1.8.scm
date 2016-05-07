@@ -31,8 +31,7 @@
 ;	(else (cubert-iter (improve guess x) guess x (+ count 1)))))
 
 (define (bad-improve guess x)
-  (define better (/ (+ (/ (+ x x)
-			  (square guess))
+  (define better (/ (+ (* 2 (/ x (square guess)))
 		       guess)
 		    3))
 ;  (display better)

@@ -49,7 +49,7 @@
 (theorem 100)
 ; result 3.542248481792618e20 -- beyond precision of double
 
-; It remains to show that (< (/ (expt psi n) (sqrt 5)) 0.5)
+; It remains to show that (< (/ (expt psi n) (sqrt 5)) 0.5) for all n >= 1
 psi
 ; result -.6180339887498949
 (expt psi 2)
@@ -57,4 +57,5 @@ psi
 ; So all higher powers will be less than 0.5.
 (sqrt 5)
 ; result 2.23606797749979
-; So the the desired relationship is true
+; So (theorem n) is less than 0.5 away from (/ (expt phi n) (sqrt 5)),
+; which is the desired result.

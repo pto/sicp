@@ -1,3 +1,6 @@
+(define (square x)
+  (* x x))
+
 (define (sqrt-iter guess x)
   (if (good-enough? guess x)
       guess
@@ -17,22 +20,23 @@
 
 (square (sqrt 1e-4))
 ; expected: not the correct 1e-4
-(square (sqrt 1e15))
+;(square (sqrt 1e15))
 ; expected: endless loop
-; break with C-c C-c
 
-(define (sqrt-iter guess prev-guess x)
-  (if (good-enough? guess prev-guess)
+(define (sqrt-iter-improved guess prev-guess x)
+  (if (good-enough-improved? guess prev-guess)
       guess
-      (sqrt-iter (improve guess x) guess x)))
+      (sqrt-iter-improved (improve guess x) guess x)))
 
-(define (good-enough? guess prev-guess)
+(define (good-enough-improved? guess prev-guess)
   (< (abs (- guess prev-guess)) (/ guess 1000)))
 
-(define (sqrt x)
-  (sqrt-iter 1.0 0.0 x))
+(define (sqrt-improved x)
+  (sqrt-iter-improved 1.0 0.0 x))
 
-(square (sqrt 1e-8))
+(square (sqrt-improved 1e-4))
+; expected 1e-4
+(square (sqrt-improved 1e-8))
 ; expected: 1e-8
-(square (sqrt 1e15))
+(square (sqrt-improved 1e15))
 ; expected : 1e15

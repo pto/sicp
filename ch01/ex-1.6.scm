@@ -1,3 +1,6 @@
+(define (square x)
+  (* x x))
+
 (define (new-if predicate then-clause else-clause)
   (cond (predicate then-clause)
 	(else else-clause)))
@@ -23,4 +26,4 @@
   (sqrt-iter 1.0 x))
 
 (sqrt 9)
-; expected: stack overflow
+; expected: infinite loop

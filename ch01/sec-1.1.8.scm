@@ -1,3 +1,6 @@
+(define (square x)
+  (* x x))
+
 (define (square2 x)
   (exp (double (log x))))
 

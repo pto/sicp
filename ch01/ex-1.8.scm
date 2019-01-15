@@ -1,8 +1,8 @@
 (define (cbrt x)
   (define (cbrt-iter guess prev-guess)
     (if (good-enough? guess prev-guess)
-      guess
-      (cbrt-iter (improve guess) guess)))
+        guess
+        (cbrt-iter (improve guess) guess)))
   (define (improve guess)
     (/ (+ (/ x (* guess guess))
           (* 2 guess))
@@ -20,11 +20,11 @@
 (cube (cbrt 0.123456789))
 
 ; weighting the average the other way converges VERY slowly
-(define (cbrt-display x)
+(define (cbrt-display x fast?)
   (define (cbrt-iter guess prev-guess count)
     (if (good-enough? guess prev-guess)
-      (cons guess count)
-      (cbrt-iter (improve guess) guess (+ count 1))))
+        (cons guess count)
+        (cbrt-iter (improve guess) guess (+ count 1))))
   (define (improve guess)
     (define better-fast (/ (+ (/ x (* guess guess))
                               (* 2 guess))
@@ -32,8 +32,13 @@
     (define better-slow (/ (+ (* 2 (/ x (* guess guess)))
                               guess)
                            3))
-    better-slow)
+    (if fast? better-fast better-slow))
   (define delta 1e-3)
   (define (good-enough? guess prev-guess)
     (< (abs (- guess prev-guess)) (abs (* guess delta))))
   (cbrt-iter 1.0 0.0 0))
+
+(cbrt-display 8 #t)
+(cbrt-display 8 #f)
+(cbrt-display 27000 #t)
+(cbrt-display 27000 #f)

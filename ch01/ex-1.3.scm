@@ -1,15 +1,17 @@
-(define (ss-larger a b c)
-  (cond ((= a (least a b c)) (sum-of-squares b c))
-	((= b (least a b c)) (sum-of-squares a c))
-	(else (sum-of-squares a b))))
-
-(define (sum-of-squares x y)
-  (+ (square x) (square y)))
-
 (define (least a b c)
   (cond ((and (<= a b) (<= a c)) a)
 	((and (<= b a) (<= b c)) b)
 	(else c)))
+
+(define (square x) (* x x))
+
+(define (sum-of-squares x y)
+  (+ (square x) (square y)))
+
+(define (ss-larger a b c)
+  (cond ((= a (least a b c)) (sum-of-squares b c))
+	((= b (least a b c)) (sum-of-squares a c))
+	(else (sum-of-squares a b))))
 
 (ss-larger 1 2 3)
 (ss-larger 2 1 3)

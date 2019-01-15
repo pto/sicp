@@ -19,8 +19,8 @@
     (/ (+ x y) 2))
   (define (sqrt-iter guess x)
     (if (good-enough? guess x)
-	guess
-	(sqrt-iter (improve guess x) x)))
+        guess
+        (sqrt-iter (improve guess x) x)))
   (sqrt-iter 1.0 x))
 
 (sqrt 2)
@@ -35,8 +35,8 @@
     (/ (+ x y) 2))
   (define (sqrt-iter guess)
     (if (good-enough? guess)
-	guess
-	(sqrt-iter (improve guess))))
+        guess
+        (sqrt-iter (improve guess))))
   (sqrt-iter 1.0))
 
 (sqrt3 2)
